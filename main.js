@@ -23,11 +23,26 @@ camera = document.getElementById("camera");
        classifier.classify(img,gotresult);
      }
 
-     function gotresult(error,results) {
-       if(error){console.error(error);}
-       else{
-         console.log(results);
-         document.getElementById("result_object_name").innerHTML=results[0].label;
-         document.getElementById("result_object_accuracy").innerHTML=results[0].confidence.tofixed(3);
-       }
-     }
+     
+     function gotResult(error, results) {
+      if (error) {
+        console.error(error);
+      } else {
+        console.log(results);
+        document.getElementById("result_hand_gesture_name").innerHTML = results[0].label;
+    
+        if(results[0].label == "super")
+        {
+            document.getElementById("update_hand_gesture").innerHTML = "&#128076;";
+        }
+        if(results[0].label == "thumps_up")
+        {
+            document.getElementById("update_hand_gesture").innerHTML = "&#128077;";
+        }
+        if(results[0].label == "thumps_down")
+        {
+            document.getElementById("update_hand_gesture").innerHTML = "&#128078;";
+        }
+    
+      }
+    }
